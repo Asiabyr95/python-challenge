@@ -1,9 +1,13 @@
+# importing libraries
 import csv
 import os
+# use absolute paths for the files
 input_file=os.path.join("Resources", "election_data.csv")
 output_file=os.path.join("analysis","election_results.txt")
+#initializing all that require variables
 total_votes=0
 candidate_votes={}
+#reading the csv file and executing for loop and if conditions
 with open(input_file,'r') as csvfile:
     csvreader=csv.reader(csvfile)
     header=next(csvreader)
@@ -18,6 +22,7 @@ with open(input_file,'r') as csvfile:
 
 winner=max(candidate_votes,key=candidate_votes.get)
 
+# displaying output in the required format
 output=(
     "Election Results\n"
     "------------------------\n"
@@ -32,6 +37,7 @@ output+=(
     f"Winner: {winner}\n"
     "-------------------------\n"
 )
+# printing the output
 print(output)
 with open(output_file,'w') as file:
     file.write(output)
